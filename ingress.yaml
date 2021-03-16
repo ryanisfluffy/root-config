@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ryan-mf-ingress
+  namespace: ryan-test
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: ryan-test.lynx.act3-ace.ai
+      http:
+        paths:
+          - backend:
+              serviceName: single-spa-nav
+              servicePort: 8080
+            path: /mf/nav/(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              serviceName: single-spa-styleguide
+              servicePort: 8080
+            path: /mf/styleguide/(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              serviceName: single-spa-planets
+              servicePort: 8080
+            path: /mf/planets/(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              serviceName: single-spa-people
+              servicePort: 8080
+            path: /mf/people/(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              serviceName: single-spa-api
+              servicePort: 8080
+            path: /api/(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              serviceName: root-app
+              servicePort: 8080
+            path: /(.*)
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - ryan-test.lynx.act3-ace.ai

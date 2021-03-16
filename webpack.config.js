@@ -10,6 +10,9 @@ module.exports = (webpackConfigEnv, argv) => {
     webpackConfigEnv,
     argv,
     disableHtmlGeneration: true,
+    devServer: {
+      lazy: true,
+    },
   });
 
   return merge(

@@ -12,11 +12,11 @@ spec:
         app: root-app
     spec:
       containers:
-      - name: root-app
-        image: ryanisfluffy/single-spa-image:v0.0.1
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 9000
+        - name: root-app
+          image: ryanisfluffy/single-spa-image:v0.0.28
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
